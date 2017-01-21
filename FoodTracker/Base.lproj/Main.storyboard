@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EqA-sa-0x6">
-                                <rect key="frame" x="16" y="40" width="343" height="96.5"/>
+                                <rect key="frame" x="16" y="40" width="343" height="447.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMr-qp-me2">
                                         <rect key="frame" x="0.0" y="0.0" width="83.5" height="20.5"/>
@@ -39,11 +40,28 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxK-zF-Zbt">
                                         <rect key="frame" x="0.0" y="66.5" width="151" height="30"/>
+                                        <gestureRecognizers/>
                                         <state key="normal" title="Set Default Text Label"/>
+                                        <connections>
+                                            <action selector="defaultLabelTextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cWJ-9i-Tkm"/>
+                                            <outletCollection property="gestureRecognizers" destination="FJG-ce-uqt" appends="YES" id="vej-Zj-dvE"/>
+                                        </connections>
                                     </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="sqc-FD-WzI">
+                                        <rect key="frame" x="0.0" y="104.5" width="343" height="343"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="sqc-FD-WzI" secondAttribute="height" multiplier="1:1" id="0O6-jp-BWf"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="FJG-ce-uqt" appends="YES" id="o35-gH-DJl"/>
+                                            <outletCollection property="gestureRecognizers" destination="FJG-ce-uqt" appends="YES" id="GIH-6f-MIv"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailingMargin" secondItem="qwM-0o-ndc" secondAttribute="trailing" id="DG4-28-0RT"/>
+                                    <constraint firstAttribute="trailing" secondItem="sqc-FD-WzI" secondAttribute="trailing" id="mdu-sY-MkT"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -51,17 +69,27 @@
                         <constraints>
                             <constraint firstItem="EqA-sa-0x6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Km1-sF-Oo0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EqA-sa-0x6" secondAttribute="trailing" id="c1N-jZ-GCm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hMr-qp-me2" secondAttribute="trailing" constant="259.5" id="gZ7-wb-uH3"/>
                             <constraint firstItem="EqA-sa-0x6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="jEK-rG-3ee"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mealNameLabel" destination="hMr-qp-me2" id="vvX-YV-AOd"/>
-                        <outlet property="nameTextField" destination="qwM-0o-ndc" id="yIj-Pe-21g"/>
+                        <outlet property="mealNameLabel" destination="hMr-qp-me2" id="gwj-GL-730"/>
+                        <outlet property="nameTextField" destination="qwM-0o-ndc" id="mBw-U8-Fom"/>
+                        <outlet property="photoImageView" destination="sqc-FD-WzI" id="4uO-od-Y1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="FJG-ce-uqt">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="RMq-md-ddf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="34.632683658170919"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="320" height="320"/>
+    </resources>
 </document>
