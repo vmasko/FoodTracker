@@ -17,12 +17,13 @@ class ViewController: UIViewController,
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var mealNameLabel: UILabel!
   @IBOutlet weak var photoImageView: UIImageView!
+  @IBOutlet weak var ratingControl: RatingControl!
     
   
   override func viewDidLoad() {
     super.viewDidLoad()
         
-    // Handle the text field’s user input through delegate callbacks.
+    // Handle the text field’s user input through   delegate callbacks.
     nameTextField.delegate = self
   }
   
@@ -62,10 +63,6 @@ class ViewController: UIViewController,
   
     
   //MARK: Actions
-  
-  @IBAction func defaultLabelTextButton(_ sender: Any) {
-    mealNameLabel.text = "Default Text";
-  }
   
   @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
     // Hide the keyboard.
